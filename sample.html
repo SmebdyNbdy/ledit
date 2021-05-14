@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+    <title>ledit sample</title>
+</head>
+<body>
+
+    <input type="button" name="cliquer" onclick="importer()" value="IMPORT" />
+    <input type="button" name="testor" onclick="tester()" value="TEST" />
+
+    <script type="text/javascript">
+        var ledit;
+        var leditable;
+        async function importer() {
+            let importemp = await import("./out/index.js");
+            ledit = importemp.ledit;
+            let tmp = document.createElement("p")
+            tmp.innerHTML = "success";
+            document.body.appendChild(tmp);
+        }
+        function tester() {
+            leditable = ledit.LEditable.create("h1");
+            console.log(leditable.locked);
+            console.log(leditable.attached);
+            leditable.attachAt(document.body);
+        }
+    </script>
+</body>
+</html>
